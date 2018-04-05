@@ -1,0 +1,37 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "2.0.0.RELEASE"
+    id "io.spring.dependency-management" version "1.0.4.RELEASE"
+}
+
+group = 'org.coderearth.springbootkitchen'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+clean.doLast {
+    file('.classpath').delete()
+    file('.project').delete()
+    file('.settings').deleteDir()
+    file('.gradle').deleteDir()
+
+    file('logs').deleteDir()
+    file('out').deleteDir()
+    file('bin').deleteDir()
+}
+
+bootJar {
+    mainClassName = "org.coderearth.springbootkitchen.bootscheduler.BootschedulerApplication"
+}
